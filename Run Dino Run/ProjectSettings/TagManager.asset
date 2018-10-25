@@ -58,6 +58,15 @@ TagManager:
   - name: Layer5
     uniqueID: 1319314825
     locked: 0
+  - name: Layer6
+    uniqueID: 1195784943
+    locked: 0
+  - name: Layer7
+    uniqueID: 2946998123
+    locked: 0
+  - name: Layer8
+    uniqueID: 1639017623
+    locked: 0
   - name: PlayerMeteor
     uniqueID: 1609961617
     locked: 0

@@ -7,16 +7,14 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
 	Vector2 targetPos;
-	public float yChangingValue;
-	public float speed;
-	public float maxHigh, minHigh;
+	public float yChangingValue, speed, maxHigh, minHigh, scoreToMoneyMultiple;
 
-	public int health, score;
-	public GameObject playerEffect;
+	public int health, score, money;
+	public GameObject playerEffect, ButtonManager;
 	private ShakeEffect shake;
-	public Text healthText, scoreText;
 
 	void Start(){
+		money = PlayerPrefs.GetInt ("money", 0);
 		targetPos = transform.position;
 		score = 0;
 	}
@@ -24,21 +22,13 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		healthControl ();
-		scoreControl ();
 		YChangingKeyboard ();
-		ShootChick ();
 	}
 
 	void healthControl(){
-		healthText.text = health.ToString ();
 		if (health <= 0) {
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+			ButtonManager.GetComponent<ButtonManager> ().GameOver ();
 		}
-	}
-
-	void scoreControl(){
-		scoreText.text = score.ToString ();
-
 	}
 
 	void ApplyEffect(){
@@ -68,8 +58,8 @@ public class Player : MonoBehaviour {
 			ApplyEffect ();
 		}
 		transform.position = Vector2.MoveTowards (transform.position, targetPos, speed * Time.deltaTime);
-
 	}
+
 	public void TouchAndMouseDown(){
 
 		if (transform.position.y > minHigh) {
@@ -77,12 +67,6 @@ public class Player : MonoBehaviour {
 			ApplyEffect ();
 		}
 		transform.position = Vector2.MoveTowards (transform.position, targetPos, speed * Time.deltaTime);
-
 	}
 
-	void ShootChick(){
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			GetComponent<Animator> ().SetTrigger ("shootChick");
-		}
-	}
 }

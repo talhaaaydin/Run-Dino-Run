@@ -18,7 +18,6 @@ public class Asteroid : MonoBehaviour {
 			Instantiate (effect, transform.position, Quaternion.identity);
 			other.GetComponent<Player> ().health -= healthDamage;
 			other.GetComponent<Player> ().score -= scoreDamage;
-			Debug.Log(other.GetComponent<Player>().health);
 			Destroy (gameObject);
 		}
 	}

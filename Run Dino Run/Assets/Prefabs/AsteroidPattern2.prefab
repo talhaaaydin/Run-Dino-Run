@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4b8ece12cd28e49bdf78ce052528d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  senNesin: 2
+  senNesin: 1
   destroyLimitDistance: 0

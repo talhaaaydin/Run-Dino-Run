@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyYourself : MonoBehaviour {
 
 	public enum Orientation{
-		Asteroid, Effect, AsteroidPattern
+		Asteroid, AsteroidPattern
 	};
 	public Orientation senNesin;
 
@@ -14,8 +14,6 @@ public class DestroyYourself : MonoBehaviour {
 	void Update () {
 		if (senNesin == Orientation.Asteroid) {
 			DestroyAsteroid ();
-		} else if (senNesin == Orientation.Effect) {
-			DestroyEffect ();
 		} else if (senNesin == Orientation.AsteroidPattern) {
 			DestroyAsteroidPattern ();
 		}
@@ -27,23 +25,18 @@ public class DestroyYourself : MonoBehaviour {
 		if (Vector2.Distance (transform.position, player.position) >= destroyLimitDistance && xFarki <= 0) {
 			//puana ekleme yapılıyor.
 			player.gameObject.GetComponent<Player>().score += 1;
+			player.gameObject.GetComponent<Player> ().money += Mathf.RoundToInt(player.gameObject.GetComponent<Player> ().scoreToMoneyMultiple);
 			//puana ekleme yapıldı.
-			Destroy (gameObject);
-		}
-	}
-
-	void DestroyEffect(){
-		ParticleSystem ps = GetComponent<ParticleSystem> ();
-		if (!ps.isPlaying) {
 			Destroy (gameObject);
 		}
 	}
 
 	void DestroyAsteroidPattern(){
 		string name = gameObject.name;
-		GameObject other = GameObject.Find (name);
-		if (other.gameObject != gameObject) {
+		GameObject pattern = GameObject.Find (name);
+		if (pattern != gameObject) {
 			Destroy (gameObject);
 		}
 	}
+
 }

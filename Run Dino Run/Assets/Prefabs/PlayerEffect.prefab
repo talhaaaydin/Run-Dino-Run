@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4089685653784130}
   - component: {fileID: 198977408829845224}
   - component: {fileID: 199625166271657856}
-  - component: {fileID: 114310850278503232}
   m_Layer: 8
   m_Name: PlayerEffect
   m_TagString: Untagged
@@ -42,19 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!114 &114310850278503232
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1004204650621048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df4b8ece12cd28e49bdf78ce052528d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  senNesin: 1
-  destroyLimitDistance: 5
 --- !u!198 &198977408829845224
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -64,7 +50,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 0.1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   looping: 0
   prewarm: 0
   playOnAwake: 1

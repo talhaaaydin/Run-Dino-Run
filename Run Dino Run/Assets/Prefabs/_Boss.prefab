@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1490626188743104}
+  m_IsPrefabAsset: 1
+--- !u!1 &1490626188743104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4640842226575738}
+  - component: {fileID: 114485692969655826}
+  m_Layer: 0
+  m_Name: _Boss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4640842226575738
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490626188743104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114485692969655826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490626188743104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13d3f94cf4fcf843900670837379d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arkaPlan1: arkaPlan1
+  arkaPlan2: arkaPlan2
+  arkaPlan3: arkaPlan3
+  upButton: {fileID: 0}
+  downButton: {fileID: 0}
+  upButtonImage: {fileID: 0}
+  downButtonImage: {fileID: 0}
+  ap1kameraArkaPlanRenk: {r: 0.60784316, g: 0.5568628, b: 0.28235295, a: 1}
+  ap1upButtonImageRenk: {r: 1, g: 0.80784315, b: 0.61960787, a: 1}
+  ap1downButtonImageRenk: {r: 1, g: 0.8078432, b: 0.61960787, a: 1}
+  ap1upButtonSprite: {fileID: 21300000, guid: edf711441da8c428bae528686532e5e4, type: 3}
+  ap1downButtonSprite: {fileID: 21300000, guid: edf711441da8c428bae528686532e5e4,
+    type: 3}
+  ap2kameraArkaPlanRenk: {r: 0.06666667, g: 0.050980393, b: 0.07058824, a: 1}
+  ap2upButtonImageRenk: {r: 0.7764706, g: 0.5647059, b: 0.8117647, a: 1}
+  ap2downButtonImageRenk: {r: 0.1764706, g: 0.15686275, b: 0.18039216, a: 1}
+  ap2upButtonSprite: {fileID: 21300000, guid: 11d75de4e00bf4ca096aa248388d6a76, type: 3}
+  ap2downButtonSprite: {fileID: 21300000, guid: 11d75de4e00bf4ca096aa248388d6a76,
+    type: 3}
+  ap3kameraArkaPlanRenk: {r: 0.96862745, g: 0.7372549, b: 0.45490196, a: 0}
+  ap3upButtonImageRenk: {r: 0.098039225, g: 0.098039225, b: 0.38431376, a: 0}
+  ap3downButtonImageRenk: {r: 0.098039225, g: 0.098039225, b: 0.38431376, a: 0}
+  ap3upButtonSprite: {fileID: 21300000, guid: 159709bc538104a329b60b7b07386209, type: 3}
+  ap3downButtonSprite: {fileID: 21300000, guid: 159709bc538104a329b60b7b07386209,
+    type: 3}
+  backgroundImages1: {fileID: 1076404074361952, guid: 6150a2150e04e2b4d9ea585a0006101c,
+    type: 2}
+  backgroundImages2: {fileID: 1498170206296020, guid: 0de7fc5f8ae3f634f846591cf6ae016a,
+    type: 2}
+  backgroundImages3: {fileID: 1080509555901648, guid: f1e86ead7a7887c42aafd35030e15035,
+    type: 2}
