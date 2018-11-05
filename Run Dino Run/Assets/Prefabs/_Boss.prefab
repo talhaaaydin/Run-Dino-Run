@@ -64,15 +64,15 @@ MonoBehaviour:
   ap1upButtonSprite: {fileID: 21300000, guid: edf711441da8c428bae528686532e5e4, type: 3}
   ap1downButtonSprite: {fileID: 21300000, guid: edf711441da8c428bae528686532e5e4,
     type: 3}
-  ap2kameraArkaPlanRenk: {r: 0.06666667, g: 0.050980393, b: 0.07058824, a: 1}
+  ap2kameraArkaPlanRenk: {r: 0.039215688, g: 0.03137255, b: 0.043137256, a: 1}
   ap2upButtonImageRenk: {r: 0.7764706, g: 0.5647059, b: 0.8117647, a: 1}
   ap2downButtonImageRenk: {r: 0.1764706, g: 0.15686275, b: 0.18039216, a: 1}
   ap2upButtonSprite: {fileID: 21300000, guid: 11d75de4e00bf4ca096aa248388d6a76, type: 3}
   ap2downButtonSprite: {fileID: 21300000, guid: 11d75de4e00bf4ca096aa248388d6a76,
     type: 3}
-  ap3kameraArkaPlanRenk: {r: 0.96862745, g: 0.7372549, b: 0.45490196, a: 0}
-  ap3upButtonImageRenk: {r: 0.098039225, g: 0.098039225, b: 0.38431376, a: 0}
-  ap3downButtonImageRenk: {r: 0.098039225, g: 0.098039225, b: 0.38431376, a: 0}
+  ap3kameraArkaPlanRenk: {r: 0.5921569, g: 0.45098042, b: 0.2784314, a: 1}
+  ap3upButtonImageRenk: {r: 0.83921576, g: 0.98823535, b: 0.29411766, a: 1}
+  ap3downButtonImageRenk: {r: 0.83921576, g: 0.98823535, b: 0.29411766, a: 0}
   ap3upButtonSprite: {fileID: 21300000, guid: 159709bc538104a329b60b7b07386209, type: 3}
   ap3downButtonSprite: {fileID: 21300000, guid: 159709bc538104a329b60b7b07386209,
     type: 3}

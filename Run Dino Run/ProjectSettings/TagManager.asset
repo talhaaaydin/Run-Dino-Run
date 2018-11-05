@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Asteroid
   - ShakeEffect
+  - _Boss
+  - ButtonManager
+  - _BossMainMenu
   layers:
   - Default
   - TransparentFX

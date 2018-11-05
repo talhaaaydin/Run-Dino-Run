@@ -78,11 +78,17 @@ public class ButtonManager : MonoBehaviour {
 		PausePanel.SetActive (false);
 		GameOverPanel.SetActive (true);
 		TimeScaleChange (0);
+		PlayerPrefs.SetInt ("kacKereOynandi", (PlayerPrefs.GetInt ("kacKereOynandi", 0) + 1));
+		PlayerPrefs.SetInt ("energyValue", (PlayerPrefs.GetInt ("energyValue") - 1));
 		PlayerPrefs.SetInt ("money", player.GetComponent<Player> ().money);
+		int kayitliScore = PlayerPrefs.GetInt ("bestScore", 0);
+		if (player.GetComponent<Player> ().score > kayitliScore) {
+			PlayerPrefs.SetInt ("bestScore", player.GetComponent<Player> ().score);
+		}
 	}
 
 	public void Exit(){
-		Application.Quit ();
+		SceneManager.LoadScene ("1MainScene");
 	}
 
 	void TimeScaleChange(float timeScale){

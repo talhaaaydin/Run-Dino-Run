@@ -26,7 +26,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void healthControl(){
-		if (health <= 0) {
+		GameObject buttonManager = GameObject.FindGameObjectWithTag ("ButtonManager");
+		if (health <= 0 && !buttonManager.GetComponent<ButtonManager>().GameOverPanel.activeInHierarchy) {
 			ButtonManager.GetComponent<ButtonManager> ().GameOver ();
 		}
 	}

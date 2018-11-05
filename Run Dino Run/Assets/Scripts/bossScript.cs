@@ -5,8 +5,7 @@ using UnityEngine.UI;
 using UnityEditor;
 
 public class bossScript : MonoBehaviour {
-	string arkaPlan;
-	public string arkaPlan1, arkaPlan2, arkaPlan3;
+	string arkaPlan, arkaPlan1, arkaPlan2, arkaPlan3;
 
 	public Button upButton, downButton;
 	public Image upButtonImage, downButtonImage;
@@ -23,12 +22,16 @@ public class bossScript : MonoBehaviour {
 	public GameObject backgroundImages1, backgroundImages2, backgroundImages3;
 	// Use this for initialization
 	void Start () {
+		arkaPlan1 = PlayerPrefs.GetString ("arkaPlan1Key");
+		arkaPlan2 = PlayerPrefs.GetString ("arkaPlan2Key");
+		arkaPlan3 = PlayerPrefs.GetString ("arkaPlan3Key");
 		Time.timeScale = 1;
 		arkaPlan = PlayerPrefs.GetString ("arkaPlan", "0");
 		if (arkaPlan == "0") {
 			arkaPlan = arkaPlan1;
 			PlayerPrefs.SetString ("arkaPlan", arkaPlan1);
 		}
+
 		if (arkaPlan == arkaPlan1) {
 			Camera.main.backgroundColor = ap1kameraArkaPlanRenk;
 			upButton.gameObject.GetComponent<Image> ().sprite = ap1upButtonSprite;

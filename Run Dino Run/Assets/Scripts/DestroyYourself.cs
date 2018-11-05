@@ -22,7 +22,7 @@ public class DestroyYourself : MonoBehaviour {
 	void DestroyAsteroid(){
 		Transform player = GameObject.FindGameObjectWithTag ("Player").transform;
 		float xFarki = transform.position.x - player.position.x;
-		if (Vector2.Distance (transform.position, player.position) >= destroyLimitDistance && xFarki <= 0) {
+		if (Mathf.Abs(xFarki) >= destroyLimitDistance && xFarki <= 0) {
 			//puana ekleme yapılıyor.
 			player.gameObject.GetComponent<Player>().score += 1;
 			player.gameObject.GetComponent<Player> ().money += Mathf.RoundToInt(player.gameObject.GetComponent<Player> ().scoreToMoneyMultiple);
