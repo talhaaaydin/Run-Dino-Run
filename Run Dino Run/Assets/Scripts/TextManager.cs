@@ -7,7 +7,7 @@ public class TextManager : MonoBehaviour {
 	public Text healthMainText, scoreMainText, moneyMainText, healthPauseText, scorePauseText, moneyPauseText, scoreGameOverText, moneyGameOverText;
 	GameObject player;
 	Player playerS;
-	private int health, score, money;
+	private int health, score, money, energy;
 	void Start(){
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerS = player.GetComponent<Player> ();
@@ -32,6 +32,5 @@ public class TextManager : MonoBehaviour {
 		scoreMainText.text = scorePauseText.text = scoreGameOverText.text = score.ToString ();
 		healthMainText.text = healthPauseText.text = health.ToString ();
 		moneyMainText.text = moneyPauseText.text = moneyGameOverText.text = money.ToString ();
-
 	}
 }

@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour {
 
 	public AudioMixer aMixer;
-	public Button MuteButton;
+	public Button MuteButton, TryAgainButton;
+	public Text energyGameOverText;
 	public GameObject GamePanel, PausePanel, GameOverPanel;
 	public Sprite MuteSprite, UnMuteSprite;
 	public Slider soundSlider;
@@ -62,6 +63,16 @@ public class ButtonManager : MonoBehaviour {
 		PlayerPrefs.SetFloat ("volumeParam", volume);
 	}
 
+	void TryAgainButtonInteractable(){
+		int energyValue = PlayerPrefs.GetInt ("energyValue");
+		int energyMinValue = PlayerPrefs.GetInt ("energyMinValue");
+		if (energyValue <= energyMinValue) {
+			TryAgainButton.interactable = false;
+		} else {
+			TryAgainButton.interactable = true;
+		}
+	}
+
 	public void TryAgain(){
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
@@ -80,6 +91,8 @@ public class ButtonManager : MonoBehaviour {
 		TimeScaleChange (0);
 		PlayerPrefs.SetInt ("kacKereOynandi", (PlayerPrefs.GetInt ("kacKereOynandi", 0) + 1));
 		PlayerPrefs.SetInt ("energyValue", (PlayerPrefs.GetInt ("energyValue") - 1));
+		energyGameOverText.text = PlayerPrefs.GetInt ("energyValue").ToString();
+		TryAgainButtonInteractable ();
 		PlayerPrefs.SetInt ("money", player.GetComponent<Player> ().money);
 		int kayitliScore = PlayerPrefs.GetInt ("bestScore", 0);
 		if (player.GetComponent<Player> ().score > kayitliScore) {

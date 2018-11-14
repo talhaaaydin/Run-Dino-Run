@@ -7,9 +7,8 @@ using UnityEngine.Audio;
 
 public class bossOftheMainMenu : MonoBehaviour {
 	string arkaPlan;
-	public string arkaPlan1 = "mountain", arkaPlan2 = "forest", arkaPlan3 = "city";
+	public string arkaPlan1 = "mountain", arkaPlan2 = "forest", arkaPlan3 = "city", meteor1 = "asteroid", meteor2 = "basketball", meteor3 = "bird";
 	public int wheatPrice = 30;
-	public Image Imagebg1, Imagebg2, lockbg2, Imagebg3, lockbg3;
 	int kacKereOynandi, money, bestScore, energy;
 	public Text moneyText, bestScoreText, energyValue, wheatPriceText;
 	public Slider energySlider, soundSlider;
@@ -19,36 +18,43 @@ public class bossOftheMainMenu : MonoBehaviour {
 	public GameObject choosingBackground, marketPage;
 
 	void Start () {
+		StartSettings ();
 		ValueSettings ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		//Eğer soundSlider en düşük seviyede değilse yani sessiz modda değilse, sessiz butonunun önüne sesi açık hoparlör resmi koy.
 		if (soundSlider.value != soundSlider.minValue) {
 			MuteButton.GetComponent<Image> ().sprite = UnMuteSprite;
-		} else {
+		} else 
+		{ // Eğer soundSlider en düşük seviyedeyse sessiz moddadır. O yüzden sessiz butonunun önüne sesi kapalı hoparlör resmi koy.
 			MuteButton.GetComponent<Image> ().sprite = MuteSprite;
 		}
 
-		if (energy == energySlider.maxValue) {
+		//Eğer enerji seviyesini belirleyen energySlider en yüksek seviyedeyse yani enerjimiz tam doluysa, besle butonunu tıklanamaz hale getir.
+		//Aynı şeyi paramız, besleme bedeli veya buğday ücretinden düşükse yine yap ki parası olmayan buğday alamasın.
+		if (energy == energySlider.maxValue  || money < wheatPrice) {
 			feedButton.interactable = false;
-		} else if (energy < energySlider.maxValue) {
+		} else if (energy < energySlider.maxValue || money >= wheatPrice) 
+		{ //Eğer paramız yeterli veya daha çoksa, veya enerjimiz tam dolu değilse besleme butonunu tıklanabilir hale getir.
 			feedButton.interactable = true;
 		}
 
+		//Eğer enerjimiz en düşük seviyede ya da ondan daha düşükse ana ekrandaki play tuşu yani arka plan seçme tuşunu tıklanamaz hale getir.
 		if (energy <= energySlider.minValue) {
 			choosingBackgroundPanel.interactable = false;
 		} else if(energy > energySlider.minValue) {
+			//Eğer enerjimiz en düşük seviyenin üstünde herhangi bir seviyede ise play tuşu tıklanabilsin.
 			choosingBackgroundPanel.interactable = true;
 		}
 
 		TextSettings ();
 		ValueSettings ();
-		TikImageAorD ();
 	}
 
 	void TextSettings(){
+		//Ana ekrandaki para, en yüksek skor, enerji ve buğday ücretini gösterecek olan Text lerin içini doldurur.
 		moneyText.text = money.ToString ();
 		bestScoreText.text = bestScore.ToString ();
 		energyValue.text = energy.ToString ();
@@ -56,29 +62,51 @@ public class bossOftheMainMenu : MonoBehaviour {
 	}
 
 	void ValueSettings(){
+		//Kaç kere oynandı oyuna ilk başlandığında sıfır olarak döner çünkü kaç kere oynandı değeri ilk defa oyunda yenilince kaydedilir ve oyunda yenilgi yaşandığında
+		//güncellenir.
 		kacKereOynandi = PlayerPrefs.GetInt ("kacKereOynandi", 0);
+		//Para yine oyuna ilk başlayan birisi için sıfır olarak başlar.
 		money = PlayerPrefs.GetInt ("money", 0);
+		//En yüksek skor oyuna ilk başlayan birisi için sıfır olarak başlar.
 		bestScore = PlayerPrefs.GetInt ("bestScore", 0);
+
+		//EnergySliderın değeri, bu gameobject içindeki enerji değeri PlayerPrefsten alınan enerji değerine eşitlenir.
+		energySlider.value = energy = PlayerPrefs.GetInt ("energyValue");
+		//Soundsliderın değeri de yine önceden belirlenmiş bir ses düzeyi yoksa 0 olarak başlar.
+		float savedVolume = PlayerPrefs.GetFloat ("volumeParam", 0);
+		soundSlider.value = savedVolume;
+	}
+
+	void StartSettings(){
+		kacKereOynandi = PlayerPrefs.GetInt ("kacKereOynandi", 0);
 		if (kacKereOynandi == 0) {
+			//Eğer kaç kere oynandı değeri sıfırsa yani oyuncu oyunu yeni açmışsa
+			//Arka plan keylerini PlayerPrefse atar ve kaydeder çünkü arka plan keyleri sadece bu sahnede kullanılmıyor.Bir değeri iki yerden değiştirmek yerine bu daha mantıklı.
+			//Ve daha sonra PlayerPrefse arka plan isimlerinin karşısına alındı ve alınmadı durumları yazdırılır. Arka plan 1 için bu değer hep alındı olacaktır.
+			//Ve daha sonra PlayerPrefse enerji değeri energySlider ın alabileceği en yüksek değer olarak belirlenir.
 			PlayerPrefs.SetString ("arkaPlan1Key", arkaPlan1);
 			PlayerPrefs.SetString ("arkaPlan2Key", arkaPlan2);
 			PlayerPrefs.SetString ("arkaPlan3Key", arkaPlan3);
 			PlayerPrefs.SetString (arkaPlan1, "alindi");
 			PlayerPrefs.SetString (arkaPlan2, "alinmadi");
 			PlayerPrefs.SetString (arkaPlan3, "alinmadi");
+			PlayerPrefs.SetString ("meteor1Key", meteor1);
+			PlayerPrefs.SetString ("meteor2Key", meteor2);
+			PlayerPrefs.SetString ("meteor3Key", meteor3);
+			PlayerPrefs.SetString (meteor1, "alindi");
+			PlayerPrefs.SetString (meteor2, "alinmadi");
+			PlayerPrefs.SetString (meteor3, "alinmadi");
+			PlayerPrefs.SetString ("selectedMeteor", meteor1);
 			PlayerPrefs.SetInt ("energyValue", Mathf.RoundToInt (energySlider.maxValue));
+			PlayerPrefs.SetInt ("energyMinValue", Mathf.RoundToInt (energySlider.minValue));
 		}
-		energy = PlayerPrefs.GetInt ("energyValue");
-		energySlider.value = energy;
-		float savedVolume = PlayerPrefs.GetFloat ("volumeParam", 0);
-		soundSlider.value = savedVolume;
 	}
 
 	void SaveMoney(int money){
 		PlayerPrefs.SetInt ("money", money);
 	}
 
-	void SaveEnery(int energy){
+	void SaveEnergy(int energy){
 		PlayerPrefs.SetInt ("energyValue", energy);
 	}
 
@@ -113,47 +141,7 @@ public class bossOftheMainMenu : MonoBehaviour {
 		PlayerPrefs.SetFloat ("volumeParam", volume);
 	}
 
-	public void ChooseBackground(string backgroundName){
-		if (PlayerPrefs.GetString (backgroundName) == "alindi") {
-			PlayerPrefs.SetString ("arkaPlan", backgroundName);
-			arkaPlan = PlayerPrefs.GetString ("arkaPlan");
-		}
-	}
 
-	public void TikImageAorD(){
-		arkaPlan = PlayerPrefs.GetString ("arkaPlan", "0");
-		if (arkaPlan == "0") {
-			arkaPlan = arkaPlan1;
-			PlayerPrefs.SetString ("arkaPlan", arkaPlan1);
-		}
-		arkaPlan = PlayerPrefs.GetString ("arkaPlan");
-		if (arkaPlan == arkaPlan1) {
-			Imagebg1.gameObject.SetActive (true);
-			Imagebg2.gameObject.SetActive (false);
-			Imagebg3.gameObject.SetActive (false);
-		}else if (arkaPlan == arkaPlan2) {
-			Imagebg1.gameObject.SetActive (false);
-			Imagebg2.gameObject.SetActive (true);
-			Imagebg3.gameObject.SetActive (false);
-		}else if (arkaPlan == arkaPlan3) {
-			Imagebg1.gameObject.SetActive (false);
-			Imagebg2.gameObject.SetActive (false);
-			Imagebg3.gameObject.SetActive (true);
-		}
-
-		if (PlayerPrefs.GetString (arkaPlan2) == "alinmadi") {
-			lockbg2.gameObject.SetActive (true);
-		} else {
-			lockbg2.gameObject.SetActive (false);
-		}
-
-		if (PlayerPrefs.GetString (arkaPlan3) == "alinmadi") {
-			lockbg3.gameObject.SetActive (true);
-		} else {
-			lockbg3.gameObject.SetActive (false);
-		}
-
-	}
 
 	public void PlayButton(){
 		SceneManager.LoadScene ("2GameScene");
@@ -163,15 +151,20 @@ public class bossOftheMainMenu : MonoBehaviour {
 		marketPage.SetActive (true);
 	}
 
-	public void DeletePlayerPrefs(){
-		PlayerPrefs.DeleteAll ();
+	public void CheatButton(string whichCheat){
+		if (whichCheat == "deletePP") {
+			PlayerPrefs.DeleteAll ();
+			StartSettings ();
+		} else if (whichCheat == "moneyFull") {
+			SaveMoney (1000);
+		} else if (whichCheat == "moneyZero") {
+			SaveMoney (0);
+		}
 	}
 
 	public void FeedButton(){
-		if (money >= wheatPrice) {
-			SaveEnery (energy + 1);
-			SaveMoney (money - wheatPrice);
-		}
+		SaveEnergy (energy + 1);
+		SaveMoney (money - wheatPrice);
 	}
 
 }

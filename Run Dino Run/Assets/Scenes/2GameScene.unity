@@ -157,6 +157,16 @@ Prefab:
       propertyPath: ButtonManager
       value: 
       objectReference: {fileID: 429628719}
+    - target: {fileID: 114938412699294512, guid: f86b21366eadf9142a07e5ef2e6d19be,
+        type: 2}
+      propertyPath: maxHigh
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114938412699294512, guid: f86b21366eadf9142a07e5ef2e6d19be,
+        type: 2}
+      propertyPath: minHigh
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f86b21366eadf9142a07e5ef2e6d19be, type: 2}
   m_IsPrefabAsset: 0
@@ -342,6 +352,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1444066910562284, guid: 8bffd02ccfc65544b81ecda2b2f14d5a,
     type: 2}
   m_PrefabInternal: {fileID: 1459142882}
+--- !u!114 &847034195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114415685000081724, guid: 8bffd02ccfc65544b81ecda2b2f14d5a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1459142882}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &998367528 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114388042834965420, guid: 8bffd02ccfc65544b81ecda2b2f14d5a,
@@ -469,6 +485,11 @@ Prefab:
       propertyPath: moneyGameOverText
       value: 
       objectReference: {fileID: 1530517537}
+    - target: {fileID: 114383735862814836, guid: 1518198aa441e554cb51df9ac33bbebc,
+        type: 2}
+      propertyPath: energyGameOverText
+      value: 
+      objectReference: {fileID: 847034195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1518198aa441e554cb51df9ac33bbebc, type: 2}
   m_IsPrefabAsset: 0
@@ -556,6 +577,11 @@ Prefab:
       propertyPath: arkaPlan3
       value: city
       objectReference: {fileID: 0}
+    - target: {fileID: 114485692969655826, guid: cbb0dd9e2d5b711408e9bdacb216d673,
+        type: 2}
+      propertyPath: ap3downButtonImageRenk.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb0dd9e2d5b711408e9bdacb216d673, type: 2}
   m_IsPrefabAsset: 0
@@ -565,6 +591,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1459142882}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1315269048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114031535793071098, guid: 8bffd02ccfc65544b81ecda2b2f14d5a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1459142882}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1424955763
 Prefab:
   m_ObjectHideFlags: 0
@@ -633,6 +665,16 @@ Prefab:
       propertyPath: m_TagString
       value: ButtonManager
       objectReference: {fileID: 0}
+    - target: {fileID: 114047092919983696, guid: 534752ac3b4a053428850ebb67714294,
+        type: 2}
+      propertyPath: TryAgainButton
+      value: 
+      objectReference: {fileID: 1315269048}
+    - target: {fileID: 114047092919983696, guid: 534752ac3b4a053428850ebb67714294,
+        type: 2}
+      propertyPath: energyGameOverText
+      value: 
+      objectReference: {fileID: 847034195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 534752ac3b4a053428850ebb67714294, type: 2}
   m_IsPrefabAsset: 0
@@ -784,12 +826,16 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 812440916}
+    - target: {fileID: 1444066910562284, guid: 8bffd02ccfc65544b81ecda2b2f14d5a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bffd02ccfc65544b81ecda2b2f14d5a, type: 2}
   m_IsPrefabAsset: 0
 --- !u!114 &1530517537 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114415685000081724, guid: 8bffd02ccfc65544b81ecda2b2f14d5a,
+  m_CorrespondingSourceObject: {fileID: 114638027185171726, guid: 8bffd02ccfc65544b81ecda2b2f14d5a,
     type: 2}
   m_PrefabInternal: {fileID: 1459142882}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}

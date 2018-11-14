@@ -112,6 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Asteroid: {fileID: 1247525841791010, guid: 0d7d9b5c063323f45bf9e7b394aa6441, type: 2}
+  Basketball: {fileID: 1316304454227782, guid: fb9eb03ce9ad04d4692aeb91c0409cf8, type: 2}
+  Bird: {fileID: 1372165393814644, guid: 3faf07d24938e2445ade66f49a1a51b2, type: 2}
 --- !u!114 &114679962439719178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Asteroid: {fileID: 1247525841791010, guid: 0d7d9b5c063323f45bf9e7b394aa6441, type: 2}
+  Basketball: {fileID: 1316304454227782, guid: fb9eb03ce9ad04d4692aeb91c0409cf8, type: 2}
+  Bird: {fileID: 1372165393814644, guid: 3faf07d24938e2445ade66f49a1a51b2, type: 2}
 --- !u!114 &114962399997468430
 MonoBehaviour:
   m_ObjectHideFlags: 1

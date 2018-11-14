@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
 	private ShakeEffect shake;
 
 	void Start(){
-		money = PlayerPrefs.GetInt ("money", 0);
+		money = PlayerPrefs.GetInt ("money");
 		targetPos = transform.position;
 		score = 0;
 	}
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
 
 	public void TouchAndMouseDown(){
 
-		if (transform.position.y > minHigh) {
+		if (transform.position.y > minHigh ) {
 			targetPos = new Vector2 (transform.position.x, transform.position.y - yChangingValue);
 			ApplyEffect ();
 		}
