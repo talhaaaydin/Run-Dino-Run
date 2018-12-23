@@ -9,6 +9,7 @@ TagManager:
   - _Boss
   - ButtonManager
   - _BossMainMenu
+  - AudioSource
   layers:
   - Default
   - TransparentFX

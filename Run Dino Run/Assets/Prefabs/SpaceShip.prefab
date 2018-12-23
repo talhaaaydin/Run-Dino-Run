@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95510979602204660}
   - component: {fileID: 114844441002883016}
   - component: {fileID: 114253123580667708}
+  - component: {fileID: 60012057074533126}
   m_Layer: 0
   m_Name: SpaceShip
   m_TagString: Asteroid
@@ -36,13 +37,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1304524731531412}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -5.39, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3526497, y: -2.1550717, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60012057074533126
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304524731531412}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.48}
+    newSize: {x: 0.12, y: 0.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.48, y: 0.24}
+      - {x: -0.48, y: -0.24}
+      - {x: 0.48, y: -0.24}
+      - {x: 0.48, y: 0.24}
 --- !u!95 &95510979602204660
 Animator:
   serializedVersion: 3
@@ -87,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthDamage: 1
   scoreDamage: 2
-  speed: 5
+  speed: 6.5
   effect: {fileID: 1253719916093332, guid: 218c6551c606d624bbb8ac6a688fcfe1, type: 2}
 --- !u!212 &212131653912252026
 SpriteRenderer:
@@ -121,10 +150,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1609961617
+  m_SortingLayer: 9
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b094a368a6d09cd42997f707fc5e1d65, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 48a39b47914f2a74f99b7375453bdc1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

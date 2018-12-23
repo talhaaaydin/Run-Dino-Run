@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.8
+  bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -734,7 +734,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 08548127-39d9-4ca1-a46b-d70a8e4f1c65
-  projectName: Run Dino Run
+  projectName: Fly Chick Fly
   organizationId: apoaga64
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

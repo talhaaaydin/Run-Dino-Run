@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour {
-	public GameObject Asteroid, Basketball, Bird;
+	public GameObject Asteroid, Basketball, Bird, SpaceShip;
 	// Use this for initialization
 	void Start () {
 		string MeteorValue1 = PlayerPrefs.GetString ("meteor1Key");
 		string MeteorValue2 = PlayerPrefs.GetString ("meteor2Key");
 		string MeteorValue3 = PlayerPrefs.GetString ("meteor3Key");
+		string MeteorValue4 = PlayerPrefs.GetString ("meteor4Key");
 		string Meteor = PlayerPrefs.GetString ("selectedMeteor");
 
 		if (Meteor == MeteorValue1) {
@@ -17,6 +18,8 @@ public class SpawnPoint : MonoBehaviour {
 			Instantiate (Basketball, transform.position, Quaternion.identity);
 		} else if (Meteor == MeteorValue3) {
 			Instantiate (Bird, transform.position, Quaternion.identity);
+		} else if (Meteor == MeteorValue4) {
+			Instantiate (SpaceShip, transform.position, Quaternion.identity);
 		}
 	}
 

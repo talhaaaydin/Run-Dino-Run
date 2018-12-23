@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114485692969655826}
   m_Layer: 0
   m_Name: _Boss
-  m_TagString: Untagged
+  m_TagString: _Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,9 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13d3f94cf4fcf843900670837379d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arkaPlan1: arkaPlan1
-  arkaPlan2: arkaPlan2
-  arkaPlan3: arkaPlan3
   upButton: {fileID: 0}
   downButton: {fileID: 0}
   upButtonImage: {fileID: 0}
@@ -72,9 +69,15 @@ MonoBehaviour:
     type: 3}
   ap3kameraArkaPlanRenk: {r: 0.5921569, g: 0.45098042, b: 0.2784314, a: 1}
   ap3upButtonImageRenk: {r: 0.83921576, g: 0.98823535, b: 0.29411766, a: 1}
-  ap3downButtonImageRenk: {r: 0.83921576, g: 0.98823535, b: 0.29411766, a: 0}
+  ap3downButtonImageRenk: {r: 0.83921576, g: 0.98823535, b: 0.29411766, a: 1}
   ap3upButtonSprite: {fileID: 21300000, guid: 159709bc538104a329b60b7b07386209, type: 3}
   ap3downButtonSprite: {fileID: 21300000, guid: 159709bc538104a329b60b7b07386209,
+    type: 3}
+  ap4kameraArkaPlanRenk: {r: 1, g: 0.5882353, b: 0.4901961, a: 1}
+  ap4upButtonImageRenk: {r: 0.28627452, g: 0.38431376, b: 0.28627452, a: 1}
+  ap4downButtonImageRenk: {r: 0.9450981, g: 0.9450981, b: 0.81568635, a: 1}
+  ap4upButtonSprite: {fileID: 21300000, guid: 159709bc538104a329b60b7b07386209, type: 3}
+  ap4downButtonSprite: {fileID: 21300000, guid: 159709bc538104a329b60b7b07386209,
     type: 3}
   backgroundImages1: {fileID: 1076404074361952, guid: 6150a2150e04e2b4d9ea585a0006101c,
     type: 2}
@@ -82,3 +85,4 @@ MonoBehaviour:
     type: 2}
   backgroundImages3: {fileID: 1080509555901648, guid: f1e86ead7a7887c42aafd35030e15035,
     type: 2}
+  backgroundImages4: {fileID: 0}

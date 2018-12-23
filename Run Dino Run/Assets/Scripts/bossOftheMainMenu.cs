@@ -4,18 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.Advertisements;
+
 
 public class bossOftheMainMenu : MonoBehaviour {
 	string arkaPlan;
-	public string arkaPlan1 = "mountain", arkaPlan2 = "forest", arkaPlan3 = "city", meteor1 = "asteroid", meteor2 = "basketball", meteor3 = "bird";
+	public string arkaPlan1 = "mountain", arkaPlan2 = "forest", arkaPlan3 = "city", arkaPlan4 = "hill", meteor1 = "asteroid", meteor2 = "basketball", meteor3 = "bird", meteor4 = "spaceShip";
 	public int wheatPrice = 30;
 	int kacKereOynandi, money, bestScore, energy;
 	public Text moneyText, bestScoreText, energyValue, wheatPriceText;
 	public Slider energySlider, soundSlider;
 	public AudioMixer aMixer;
-	public Button MuteButton, feedButton, choosingBackgroundPanel;
+	public Button MuteButton, feedButton, adForMoneyButton, choosingBackgroundPanel;
 	public Sprite MuteSprite, UnMuteSprite;
-	public GameObject choosingBackground, marketPage;
+	public GameObject  marketPage;
 
 	void Start () {
 		StartSettings ();
@@ -51,6 +53,7 @@ public class bossOftheMainMenu : MonoBehaviour {
 
 		TextSettings ();
 		ValueSettings ();
+		NoEnergyNoMoneyProblem ();
 	}
 
 	void TextSettings(){
@@ -59,6 +62,56 @@ public class bossOftheMainMenu : MonoBehaviour {
 		bestScoreText.text = bestScore.ToString ();
 		energyValue.text = energy.ToString ();
 		wheatPriceText.text = wheatPrice.ToString ();
+	}
+
+	void NoEnergyNoMoneyProblem(){
+		bool isAdReady = Advertisement.IsReady ("rewardedVideo");
+		if (isAdReady) {
+			if (money < wheatPrice && energy <= energySlider.minValue) {
+				feedButton.gameObject.SetActive (false);
+				adForMoneyButton.gameObject.SetActive (true);
+				adForMoneyButton.interactable = true;
+			} else {
+				feedButton.gameObject.SetActive (true);
+				adForMoneyButton.gameObject.SetActive (false);
+				adForMoneyButton.interactable = true;
+			}
+		} else {
+			if (money < wheatPrice && energy <= energySlider.minValue) {
+				feedButton.gameObject.SetActive (false);
+				adForMoneyButton.gameObject.SetActive (true);
+				adForMoneyButton.interactable = false;
+			} else {
+				feedButton.gameObject.SetActive (true);
+				adForMoneyButton.gameObject.SetActive (false);
+				adForMoneyButton.interactable = false;
+			}
+		}
+	}
+
+	public void AdForMoney(){
+		if (Advertisement.IsReady("rewardedVideo"))
+		{
+			var options = new ShowOptions { resultCallback = HandleShowResult };
+			Advertisement.Show("rewardedVideo", options);
+		}
+	
+	}
+
+	private void HandleShowResult(ShowResult result){
+		switch (result)
+		{
+		case ShowResult.Finished:
+			Debug.Log ("The ad was successfully shown.");
+			SaveMoney (money + wheatPrice);
+			break;
+		case ShowResult.Skipped:
+			Debug.Log("The ad was skipped before reaching the end.");
+			break;
+		case ShowResult.Failed:
+			Debug.LogError("The ad failed to be shown.");
+			break;
+		}
 	}
 
 	void ValueSettings(){
@@ -87,15 +140,19 @@ public class bossOftheMainMenu : MonoBehaviour {
 			PlayerPrefs.SetString ("arkaPlan1Key", arkaPlan1);
 			PlayerPrefs.SetString ("arkaPlan2Key", arkaPlan2);
 			PlayerPrefs.SetString ("arkaPlan3Key", arkaPlan3);
+			PlayerPrefs.SetString ("arkaPlan4Key", arkaPlan4);
 			PlayerPrefs.SetString (arkaPlan1, "alindi");
 			PlayerPrefs.SetString (arkaPlan2, "alinmadi");
 			PlayerPrefs.SetString (arkaPlan3, "alinmadi");
+			PlayerPrefs.SetString (arkaPlan4, "alinmadi");
 			PlayerPrefs.SetString ("meteor1Key", meteor1);
 			PlayerPrefs.SetString ("meteor2Key", meteor2);
 			PlayerPrefs.SetString ("meteor3Key", meteor3);
+			PlayerPrefs.SetString ("meteor4Key", meteor4);
 			PlayerPrefs.SetString (meteor1, "alindi");
 			PlayerPrefs.SetString (meteor2, "alinmadi");
 			PlayerPrefs.SetString (meteor3, "alinmadi");
+			PlayerPrefs.SetString (meteor4, "alinmadi");
 			PlayerPrefs.SetString ("selectedMeteor", meteor1);
 			PlayerPrefs.SetInt ("energyValue", Mathf.RoundToInt (energySlider.maxValue));
 			PlayerPrefs.SetInt ("energyMinValue", Mathf.RoundToInt (energySlider.minValue));
@@ -156,7 +213,7 @@ public class bossOftheMainMenu : MonoBehaviour {
 			PlayerPrefs.DeleteAll ();
 			StartSettings ();
 		} else if (whichCheat == "moneyFull") {
-			SaveMoney (1000);
+			SaveMoney ( money + 1000);
 		} else if (whichCheat == "moneyZero") {
 			SaveMoney (0);
 		}

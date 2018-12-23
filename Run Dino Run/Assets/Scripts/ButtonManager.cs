@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
 
 public class ButtonManager : MonoBehaviour {
 
@@ -97,6 +98,15 @@ public class ButtonManager : MonoBehaviour {
 		int kayitliScore = PlayerPrefs.GetInt ("bestScore", 0);
 		if (player.GetComponent<Player> ().score > kayitliScore) {
 			PlayerPrefs.SetInt ("bestScore", player.GetComponent<Player> ().score);
+		}
+		if (PlayerPrefs.GetInt ("kacKereOynandi") % 3 == 1) {
+			ShowAd ();
+		}
+	}
+
+	void ShowAd(){
+		if (Advertisement.IsReady () ) {
+			Advertisement.Show ();
 		}
 	}
 

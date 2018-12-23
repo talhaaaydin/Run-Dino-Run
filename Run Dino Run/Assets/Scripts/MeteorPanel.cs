@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MeteorPanel : MonoBehaviour {
-	public Text meteor2priceText, meteor3priceText;
-	public Button basketballBuyBtn, birdBuyBtn, selectButtonAsteroid, selectButtonBasketball, selectButtonBird;
-	public Sprite basketballPurchasedSpr, birdPurschasedSpr, interactableSwitchOff, interactableSwitchOn;
-	bool basketballPurchasedBool, birdPurchasedBool, asteroidSelectedBool, basketballSelectedBool, birdSelectedBool;
+	public Text meteor2priceText, meteor3priceText, meteor4priceText;
+	public Button basketballBuyBtn, birdBuyBtn, spaceShipBuyBtn, selectButtonAsteroid, selectButtonBasketball, selectButtonBird, selectButtonSpaceShip;
+	public Sprite basketballPurchasedSpr, birdPurschasedSpr, spaceShipPurschasedSpr, interactableSwitchOff, interactableSwitchOn;
+	bool basketballPurchasedBool, birdPurchasedBool, spaceShipPurchasedBool, asteroidSelectedBool, basketballSelectedBool, birdSelectedBool, spaceShipSelectedBool;
 	GameObject bossMainMenu;
-	public GameObject basketballPriceParent, birdPriceParent;
-	string selectedMeteor, meteor1, meteor2, meteor3;
-	int meteor2price, meteor3price;
+	public GameObject basketballPriceParent, birdPriceParent, spaceShipPriceParent;
+	string selectedMeteor, meteor1, meteor2, meteor3, meteor4;
+	int meteor2price, meteor3price, meteor4price;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +19,7 @@ public class MeteorPanel : MonoBehaviour {
 		meteor1 = bossMainMenu.GetComponent<bossOftheMainMenu> ().meteor1;
 		meteor2 = bossMainMenu.GetComponent<bossOftheMainMenu> ().meteor2;
 		meteor3 = bossMainMenu.GetComponent<bossOftheMainMenu> ().meteor3;
+		meteor4 = bossMainMenu.GetComponent<bossOftheMainMenu> ().meteor4;
 		selectedMeteor = PlayerPrefs.GetString ("selectedMeteor", "0");
 		if (selectedMeteor == "0") {
 			selectedMeteor = PlayerPrefs.GetString("meteor1Key");
@@ -50,6 +51,12 @@ public class MeteorPanel : MonoBehaviour {
 			birdPurchasedBool = false;
 		}
 
+		if (PlayerPrefs.GetString (meteor4) == "alindi") {
+			spaceShipPurchasedBool = true;
+		} else {
+			spaceShipPurchasedBool = false;
+		}
+
 	}
 
 	void ButtonSettings(){
@@ -72,27 +79,46 @@ public class MeteorPanel : MonoBehaviour {
 
 		}
 
+		if (spaceShipPurchasedBool && !selectButtonSpaceShip.gameObject.activeInHierarchy) {
+
+			spaceShipPriceParent.SetActive (false);
+			Destroy (spaceShipBuyBtn.GetComponent<Button> ());
+			spaceShipBuyBtn.GetComponent<Image> ().sprite = spaceShipPurschasedSpr;
+			selectButtonSpaceShip.gameObject.SetActive (true);
+
+		}
+
 
 		if (asteroidSelectedBool) {
 			selectButtonAsteroid.GetComponent<Image> ().sprite = interactableSwitchOn;
 			selectButtonBasketball.GetComponent<Image> ().sprite = interactableSwitchOff;
 			selectButtonBird.GetComponent<Image> ().sprite = interactableSwitchOff;
+			selectButtonSpaceShip.GetComponent<Image> ().sprite = interactableSwitchOff;
 		} else if (basketballSelectedBool) {
 			selectButtonAsteroid.GetComponent<Image> ().sprite = interactableSwitchOff;
 			selectButtonBasketball.GetComponent<Image> ().sprite = interactableSwitchOn;
 			selectButtonBird.GetComponent<Image> ().sprite = interactableSwitchOff;
+			selectButtonSpaceShip.GetComponent<Image> ().sprite = interactableSwitchOff;
 		} else if (birdSelectedBool) {
 			selectButtonAsteroid.GetComponent<Image> ().sprite = interactableSwitchOff;
 			selectButtonBasketball.GetComponent<Image> ().sprite = interactableSwitchOff;
 			selectButtonBird.GetComponent<Image> ().sprite = interactableSwitchOn;
+			selectButtonSpaceShip.GetComponent<Image> ().sprite = interactableSwitchOff;
+		} else if (spaceShipSelectedBool) {
+			selectButtonAsteroid.GetComponent<Image> ().sprite = interactableSwitchOff;
+			selectButtonBasketball.GetComponent<Image> ().sprite = interactableSwitchOff;
+			selectButtonBird.GetComponent<Image> ().sprite = interactableSwitchOff;
+			selectButtonSpaceShip.GetComponent<Image> ().sprite = interactableSwitchOn;
 		}
 	}
 
 	void TextSettings(){
 		meteor2price = PlayerPrefs.GetInt ("meteor2Price");
 		meteor3price = PlayerPrefs.GetInt ("meteor3Price");
+		meteor4price = PlayerPrefs.GetInt ("meteor4Price");
 		meteor2priceText.text = meteor2price.ToString ();
 		meteor3priceText.text = meteor3price.ToString ();
+		meteor4priceText.text = meteor4price.ToString ();
 	}
 
 	void isThereMoneyEnough(){
@@ -114,6 +140,15 @@ public class MeteorPanel : MonoBehaviour {
 				birdBuyBtn.interactable = false;
 			}
 		}
+
+		if (!spaceShipPurchasedBool) {
+			if (money >= meteor4price) {
+				spaceShipBuyBtn.interactable = true;
+				//cityBuyBtn.GetComponent<Image> ().sprite = forestBuyBtnDefault;
+			} else {
+				spaceShipBuyBtn.interactable = false;
+			}
+		}
 	}
 
 	void SaveMoney(int money){
@@ -128,6 +163,9 @@ public class MeteorPanel : MonoBehaviour {
 		} else if (meteor == meteor3) {
 			PlayerPrefs.SetString (meteor3, "alindi");
 			SaveMoney (money - meteor3price);
+		} else if (meteor == meteor4) {
+			PlayerPrefs.SetString (meteor4, "alindi");
+			SaveMoney (money - meteor4price);
 		}
 	}
 
@@ -143,14 +181,22 @@ public class MeteorPanel : MonoBehaviour {
 			asteroidSelectedBool = true;
 			basketballSelectedBool = false;
 			birdSelectedBool = false;
+			spaceShipSelectedBool = false;
 		} else if (selectedMeteor == meteor2) {
 			asteroidSelectedBool = false;
 			basketballSelectedBool = true;
 			birdSelectedBool = false;
+			spaceShipSelectedBool = false;
 		} else if (selectedMeteor == meteor3) {
 			asteroidSelectedBool = false;
 			basketballSelectedBool = false;
 			birdSelectedBool = true;
+			spaceShipSelectedBool = false;
+		} else if (selectedMeteor == meteor4) {
+			asteroidSelectedBool = false;
+			basketballSelectedBool = false;
+			birdSelectedBool = false;
+			spaceShipSelectedBool = true;
 		}
 
 

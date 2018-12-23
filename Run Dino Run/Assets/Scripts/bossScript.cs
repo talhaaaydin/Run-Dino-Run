@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEditor;
 
 public class bossScript : MonoBehaviour {
-	string arkaPlan, arkaPlan1, arkaPlan2, arkaPlan3;
+	string arkaPlan, arkaPlan1, arkaPlan2, arkaPlan3, arkaPlan4;
 
 	public Button upButton, downButton;
 	public Image upButtonImage, downButtonImage;
@@ -19,12 +19,16 @@ public class bossScript : MonoBehaviour {
 	public Color ap3kameraArkaPlanRenk, ap3upButtonImageRenk, ap3downButtonImageRenk;
 	public Sprite ap3upButtonSprite, ap3downButtonSprite;
 
-	public GameObject backgroundImages1, backgroundImages2, backgroundImages3;
+	public Color ap4kameraArkaPlanRenk, ap4upButtonImageRenk, ap4downButtonImageRenk;
+	public Sprite ap4upButtonSprite, ap4downButtonSprite;
+
+	public GameObject backgroundImages1, backgroundImages2, backgroundImages3, backgroundImages4;
 	// Use this for initialization
 	void Start () {
 		arkaPlan1 = PlayerPrefs.GetString ("arkaPlan1Key");
 		arkaPlan2 = PlayerPrefs.GetString ("arkaPlan2Key");
 		arkaPlan3 = PlayerPrefs.GetString ("arkaPlan3Key");
+		arkaPlan4 = PlayerPrefs.GetString ("arkaPlan4Key");
 		Time.timeScale = 1;
 		arkaPlan = PlayerPrefs.GetString ("arkaPlan", "0");
 		if (arkaPlan == "0") {
@@ -53,6 +57,13 @@ public class bossScript : MonoBehaviour {
 			upButtonImage.color = ap3upButtonImageRenk;
 			downButtonImage.color = ap3downButtonImageRenk;
 			Instantiate (backgroundImages3);
+		}else if (arkaPlan == arkaPlan4) {
+			Camera.main.backgroundColor = ap4kameraArkaPlanRenk;
+			upButton.gameObject.GetComponent<Image> ().sprite = ap4upButtonSprite;
+			downButton.gameObject.GetComponent<Image> ().sprite = ap4downButtonSprite;
+			upButtonImage.color = ap4upButtonImageRenk;
+			downButtonImage.color = ap4downButtonImageRenk;
+			Instantiate (backgroundImages4);
 		}
 	}
 
